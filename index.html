@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Добро пожаловать!</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>Пиратская гавань</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,101 +13,108 @@
     }
 
     body {
-      height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background: linear-gradient(180deg, #0a0a0a, #1a1a1a);
+      color: #f4e2d8;
       font-family: 'Montserrat', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      color: white;
-      overflow: hidden;
       padding: 2rem;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #00c9ff, #92fe9d);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInDown 1.2s ease-out;
-    }
-
-    .typing {
-      border-right: 2px solid white;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
-      font-size: 1.2rem;
-      width: 0;
+      font-family: 'Pirata One', cursive;
+      font-size: 4rem;
+      color: gold;
+      animation: sway 3s ease-in-out infinite;
       margin-top: 1rem;
+      text-shadow: 2px 2px 5px black;
     }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1.5s ease forwards;
-      animation-delay: 2.5s;
+    .flag {
+      width: 100px;
+      height: auto;
+      margin-top: 1rem;
+      animation: wave 3s ease-in-out infinite;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1.5rem 2rem;
-      border-radius: 16px;
+    .parchment {
+      background: url('https://i.imgur.com/7KpAd8p.png'); /* старый пергамент */
+      background-size: cover;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 700px;
+      text-align: center;
       margin-top: 2rem;
-      width: 100%;
-      max-width: 600px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: scaleIn 0.8s ease-out forwards;
-      opacity: 0;
-      animation-delay: 3.5s;
-      animation-fill-mode: forwards;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      animation: fadeInUp 2s ease forwards;
     }
 
-    @keyframes fadeInDown {
-      0% { transform: translateY(-30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+    .parchment p {
+      font-size: 1.2rem;
+      line-height: 1.6;
     }
 
-    @keyframes fadeInUp {
-      0% { transform: translateY(30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+    .skull {
+      font-size: 3rem;
+      margin-top: 2rem;
+      animation: blink 1.5s infinite;
     }
 
-    @keyframes scaleIn {
-      0% { transform: scale(0.95); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes wave {
+      0%, 100% { transform: rotateZ(0deg); }
+      50% { transform: rotateZ(5deg); }
     }
 
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+    @keyframes sway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
     }
 
     @keyframes blink {
-      50% { border-color: transparent; }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    a {
+      color: gold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>Добро пожаловать!</h1>
-  <div class="typing">Это начало чего-то красивого...</div>
-  <div class="fade-in">
-    <p style="margin-top: 2rem; font-size: 1.1rem; max-width: 600px; text-align: center;">
-      Здесь может быть ваш проект, портфолио, или просто страничка с идеей.
-      Это пространство, наполненное смыслом и стилем — ты сделаешь его своим ✨
+  <h1>Капитан Козхан!</h1>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" alt="Флаг Мексики" class="flag" />
+  
+  <div class="parchment">
+    <p>
+      Добро пожаловать в пиратскую гавань! Здесь скрываются сокровища, истории, коды и приключения... <br/>
+      ⚓ Это твоя персональная страница — оформи её как карту сокровищ! <br/><br/>
+      🦜 Хочешь добавить: корабль, пушки, сундуки, Telegram-ботов? Просто скажи!
     </p>
   </div>
 
-  <div class="card">
-    <h2 style="margin-bottom: 1rem;">💡 Немного вдохновения</h2>
-    <ul style="line-height: 1.8;">
-      <li>Добавь сюда фото, ссылки, свои проекты</li>
-      <li>Используй фон с анимацией, видео или параллакс</li>
-      <li>Подключи Telegram, GitHub, LinkedIn</li>
-      <li>Пиши с душой — тогда страница оживёт</li>
-    </ul>
-  </div>
+  <div class="skull">☠️</div>
+
+  <footer>
+    Сделано с душой на борту <a href="https://github.com/kozhanq/my-page">GitHub</a>
+  </footer>
 </body>
 </html>
