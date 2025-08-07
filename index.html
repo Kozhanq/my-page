@@ -36,11 +36,11 @@
       text-align: center;
     }
 
-    /* Увеличенный и мрачный флаг с более выразительной анимацией */
+    /* Большой и мрачный флаг с анимацией */
     .flag {
-      width: 450px; /* увеличил размер */
+      width: 450px;
       margin-top: 1.5rem;
-      border: 5px solid #8B7500; /* более темное золото */
+      border: 5px solid #8B7500;
       box-shadow:
         inset 0 0 30px rgba(0, 0, 0, 0.8),
         0 0 25px rgba(139, 117, 0, 0.7);
@@ -48,12 +48,11 @@
       animation: bigWave 6s ease-in-out infinite;
       border-radius: 8px;
       z-index: 3;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); /* затемняющий слой */
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
       position: relative;
       overflow: hidden;
     }
 
-    /* Для более пиратского эффекта — наложим текстуру шума */
     .flag::after {
       content: "";
       position: absolute;
@@ -64,7 +63,6 @@
       mix-blend-mode: multiply;
     }
 
-    /* Анимация развевающегося флага — более плавная и крупная */
     @keyframes bigWave {
       0%, 100% {
         transform: perspective(600px) rotateY(0deg) rotateZ(0deg) translateX(0);
@@ -84,18 +82,42 @@
       }
     }
 
+    /* Новый стиль для SVG черепа */
     .skull {
       margin-top: 2rem;
       width: 160px;
-      height: auto;
-      animation: glow 2s infinite alternate;
+      height: 160px;
+      filter:
+        drop-shadow(0 0 6px gold)
+        drop-shadow(0 0 10px black);
+      animation: pulseGlow 3s infinite alternate ease-in-out;
       z-index: 2;
-      filter: drop-shadow(0 0 5px #fff);
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        filter:
+          drop-shadow(0 0 4px #b38b00)
+          drop-shadow(0 0 8px #2c2c2c);
+        transform: scale(1);
+      }
+      50% {
+        filter:
+          drop-shadow(0 0 14px gold)
+          drop-shadow(0 0 20px #000);
+        transform: scale(1.05);
+      }
+      100% {
+        filter:
+          drop-shadow(0 0 6px #b38b00)
+          drop-shadow(0 0 10px #2c2c2c);
+        transform: scale(1);
+      }
     }
 
     .parchment {
-      background: rgba(15, 10, 5, 0.85); /* затемнил фон свитка */
-      border: 3px solid #7a5a1a; /* более мрачный цвет */
+      background: rgba(15, 10, 5, 0.85);
+      border: 3px solid #7a5a1a;
       border-radius: 20px;
       padding: 2rem;
       max-width: 750px;
@@ -104,7 +126,7 @@
       box-shadow: 0 0 30px rgba(122, 90, 26, 0.4);
       animation: fadeInUp 2s ease forwards;
       z-index: 2;
-      color: #d6c6a8; /* цвет текста с оттенком пергамента */
+      color: #d6c6a8;
       font-weight: 600;
       font-family: 'Pirata One', cursive;
       letter-spacing: 0.03em;
@@ -126,7 +148,7 @@
     }
 
     a {
-      color: #b38b00; /* потемнее золота */
+      color: #b38b00;
       text-decoration: none;
       font-weight: 700;
     }
@@ -151,11 +173,6 @@
       50% { transform: rotate(1deg); }
     }
 
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 5px #fff); }
-      to { filter: drop-shadow(0 0 20px #ffcc00); }
-    }
-
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -171,8 +188,16 @@
   <!-- Большой и мрачный флаг Мексики с анимацией -->
   <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" alt="Флаг Мексики" class="flag" />
 
-  <!-- Череп-гифка -->
-  <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Пиратский череп" class="skull" />
+  <!-- Новый стильный SVG пиратский череп -->
+  <svg class="skull" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="160" height="160" fill="none" stroke="gold" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <path fill="#111" stroke="gold" d="M32 2c-7 0-12 5-12 12 0 6 3 8 3 13 0 6-3 9-3 15 0 7 6 10 12 10s12-3 12-10c0-6-3-9-3-15 0-5 3-7 3-13 0-7-5-12-12-12z"/>
+    <circle cx="23" cy="22" r="4" fill="black" />
+    <circle cx="41" cy="22" r="4" fill="black" />
+    <path stroke="gold" d="M21 44c3 3 8 3 11 0" />
+    <path stroke="gold" d="M20 38l5 5" />
+    <path stroke="gold" d="M44 38l-5 5" />
+    <path stroke="gold" d="M27 50l5-3 5 3" />
+  </svg>
 
   <div class="parchment">
     <p>
