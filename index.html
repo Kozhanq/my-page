@@ -1,257 +1,244 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Пиратская GitHub страница</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Пиратская GitHub страница</title>
 
-  /* Общие стили */
-  body, html {
-    margin: 0; padding: 0; height: 100%;
-    overflow: hidden;
-    background: #000;
-    font-family: 'Pirata One', cursive, serif;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet" />
 
-  /* Фон — развевающийся флаг */
-  .flag-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -2;
-    overflow: hidden;
-  }
-
-  .flag {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120vw;
-    height: 80vh;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg') no-repeat center center/contain;
-    transform-origin: left center;
-    animation: wave 6s ease-in-out infinite;
-    filter: brightness(0.9);
-  }
-
-  @keyframes wave {
-    0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-    50% { transform: translate(-50%, -50%) rotate(2deg) scale(1.02); }
-  }
-
-  /* Мерцающие звезды */
-  .stars {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    background: transparent;
-  }
-
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    opacity: 0.8;
-    animation: twinkle 2s infinite alternate;
-  }
-
-  @keyframes twinkle {
-    from {opacity: 0.3;}
-    to {opacity: 1;}
-  }
-
-  /* Заголовок */
-  h1 {
-    font-size: 4em;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow:
-      0 0 8px #ff0000,
-      0 0 15px #ff4500,
-      0 0 20px #ff6347,
-      0 0 30px #ff0000;
-    margin-bottom: 0.3em;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 0.1em 0.6em;
-    border-radius: 8px;
-  }
-
-  /* Текст */
-  p {
-    font-size: 1.5em;
-    max-width: 600px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.85);
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-    background: rgba(0, 0, 0, 0.25);
-    padding: 0.3em 0.8em;
-    border-radius: 6px;
-  }
-
-  /* Контейнер выстрелов */
-  .shots-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    overflow: visible;
-    z-index: 10;
-  }
-
-  .shot {
-    position: absolute;
-    width: 4px;
-    height: 20px;
-    background: linear-gradient(45deg, #fff, #ff0);
-    filter: drop-shadow(0 0 6px #ff0);
-    animation: shot-move 0.4s ease-out forwards;
-  }
-
-  @keyframes shot-move {
-    0% { opacity: 1; transform: translateY(0) scale(1); }
-    100% { opacity: 0; transform: translateY(-200px) scale(0.2); }
-  }
-
-  /* Вспышка */
-  .flash {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: white;
-    opacity: 0;
-    pointer-events: none;
-    animation: flash-fade 0.3s ease forwards;
-    z-index: 20;
-  }
-
-  @keyframes flash-fade {
-    0% {opacity: 0.8;}
-    100% {opacity: 0;}
-  }
-
-  /* Черепа с костями — плывут сверху вниз */
-  .skull {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Skull_and_crossbones.svg/1024px-Skull_and_crossbones.svg.png') no-repeat center center/contain;
-    opacity: 0.3;
-    animation: skull-fall linear forwards;
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  @keyframes skull-fall {
-    0% { top: -80px; }
-    100% { top: 110vh; }
-  }
-
-  /* Паруса — плывут слева направо */
-  .sail {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sailboat_icon.svg/1024px-Sailboat_icon.svg.png') no-repeat center center/contain;
-    opacity: 0.15;
-    animation: sail-move linear forwards;
-    pointer-events: none;
-    z-index: 4;
-  }
-
-  @keyframes sail-move {
-    0% { left: -60px; }
-    100% { left: 110vw; }
-  }
-
-</style>
-</head>
-<body>
-
-<div class="flag-container">
-  <div class="flag"></div>
-</div>
-
-<div class="stars"></div>
-
-<h1>Пиратская GitHub страница</h1>
-<p>Добро пожаловать на мою пиратскую страницу! Здесь развевается флаг Мексики, и время от времени слышны выстрелы и вспышки пирата.</p>
-
-<div class="shots-container"></div>
-
-<script>
-  const shotsContainer = document.querySelector('.shots-container');
-  const starsContainer = document.querySelector('.stars');
-  const body = document.body;
-
-  // Создаем звезды рандомно по экрану
-  function createStars(num) {
-    for (let i = 0; i < num; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      const size = Math.random() * 3 + 1;
-      star.style.width = size + 'px';
-      star.style.height = size + 'px';
-      star.style.top = Math.random() * window.innerHeight + 'px';
-      star.style.left = Math.random() * window.innerWidth + 'px';
-      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-      starsContainer.appendChild(star);
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Pirata One', cursive;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
     }
-  }
 
-  createStars(80);
+    .flag-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -2;
+      overflow: hidden;
+    }
 
-  // Выстрелы и вспышки
-  function createShot() {
-    const shot = document.createElement('div');
-    shot.classList.add('shot');
-    shot.style.left = Math.random() * window.innerWidth + 'px';
-    shot.style.top = window.innerHeight + 'px';
-    shotsContainer.appendChild(shot);
-    shot.addEventListener('animationend', () => shot.remove());
-    if (Math.random() < 0.2) createFlash();
-  }
+    .flag {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 140vw;
+      height: 90vh;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg') no-repeat center center/cover;
+      transform-origin: left center;
+      animation: wave 6s ease-in-out infinite;
+      filter: contrast(1.1) brightness(0.85);
+      opacity: 0.85;
+    }
 
-  function createFlash() {
-    const flash = document.createElement('div');
-    flash.classList.add('flash');
-    body.appendChild(flash);
-    flash.addEventListener('animationend', () => flash.remove());
-  }
+    @keyframes wave {
+      0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(2deg) scale(1.02); }
+    }
 
-  setInterval(createShot, 1200);
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-  // Создаем черепа с костями — падают сверху вниз с рандомной скоростью и позицией
-  function createSkull() {
-    const skull = document.createElement('div');
-    skull.classList.add('skull');
-    skull.style.left = Math.random() * window.innerWidth + 'px';
-    const duration = (Math.random() * 10 + 8) * 1000;
-    skull.style.animationDuration = duration + 'ms';
-    body.appendChild(skull);
-    skull.addEventListener('animationend', () => skull.remove());
-  }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 2s infinite alternate;
+    }
 
-  setInterval(createSkull, 4000);
+    @keyframes twinkle {
+      from {opacity: 0.3;}
+      to {opacity: 1;}
+    }
 
-  // Создаем паруса — плывут слева направо с рандомной высотой и скоростью
-  function createSail() {
-    const sail = document.createElement('div');
-    sail.classList.add('sail');
-    sail.style.top = (Math.random() * window.innerHeight * 0.8 + 20) + 'px';
-    const duration = (Math.random() * 12 + 8) * 1000;
-    sail.style.animationDuration = duration + 'ms';
-    body.appendChild(sail);
-    sail.addEventListener('animationend', () => sail.remove());
-  }
+    h1 {
+      font-size: 4em;
+      text-shadow: 0 0 10px red, 0 0 20px crimson, 0 0 30px darkred;
+      margin-bottom: 0.3em;
+    }
 
-  setInterval(createSail, 3500);
+    p {
+      font-size: 1.5em;
+      max-width: 700px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
 
-</script>
+    .shots-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
 
+    .shot {
+      position: absolute;
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(45deg, #fff, #ff0);
+      filter: drop-shadow(0 0 6px #ff0);
+      animation: shot-move 0.4s ease-out forwards;
+    }
+
+    @keyframes shot-move {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-200px) scale(0.2); }
+    }
+
+    .flash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      animation: flash-fade 0.2s ease forwards;
+      z-index: 20;
+    }
+
+    @keyframes flash-fade {
+      0% {opacity: 0.9;}
+      100% {opacity: 0;}
+    }
+
+    .skull {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Skull_and_crossbones.svg/1024px-Skull_and_crossbones.svg.png') no-repeat center center/contain;
+      opacity: 0.3;
+      animation: skull-fall linear forwards;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @keyframes skull-fall {
+      0% { top: -80px; }
+      100% { top: 110vh; }
+    }
+
+    .sail {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sailboat_icon.svg/1024px-Sailboat_icon.svg.png') no-repeat center center/contain;
+      opacity: 0.15;
+      animation: sail-move linear forwards;
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    @keyframes sail-move {
+      0% { left: -60px; }
+      100% { left: 110vw; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flag-container">
+    <div class="flag"></div>
+  </div>
+
+  <div class="stars"></div>
+  <h1>Пиратская GitHub страница</h1>
+<p>Добро пожаловать на мою мрачную пиратскую страницу! Здесь развевается флаг Мексики, черепа падают с неба, и гремят выстрелы сквозь мрак.</p>
+
+  <div class="shots-container"></div>
+
+  <!-- Звук выстрела -->
+  <audio id="gunshot-sound" src="https://www.fesliyanstudios.com/play-mp3/4389" preload="auto"></audio>
+
+  <script>
+    const shotsContainer = document.querySelector('.shots-container');
+    const starsContainer = document.querySelector('.stars');
+    const body = document.body;
+    const audio = document.getElementById('gunshot-sound');
+
+    function createStars(num) {
+      for (let i = 0; i < num; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        star.style.top = Math.random() * window.innerHeight + 'px';
+        star.style.left = Math.random() * window.innerWidth + 'px';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        starsContainer.appendChild(star);
+      }
+    }
+
+    createStars(100);
+
+    function createShot() {
+      const shot = document.createElement('div');
+      shot.classList.add('shot');
+      shot.style.left = Math.random() * window.innerWidth + 'px';
+      shot.style.top = window.innerHeight + 'px';
+      shotsContainer.appendChild(shot);
+      shot.addEventListener('animationend', () => shot.remove());
+
+      if (Math.random() < 0.3) createFlash();
+
+      // звук
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      }
+    }
+
+    function createFlash() {
+      const flash = document.createElement('div');
+      flash.classList.add('flash');
+      body.appendChild(flash);
+      flash.addEventListener('animationend', () => flash.remove());
+    }
+
+    function createSkull() {
+      const skull = document.createElement('div');
+      skull.classList.add('skull');
+      skull.style.left = Math.random() * window.innerWidth + 'px';
+      const duration = (Math.random() * 10 + 8) * 1000;
+      skull.style.animationDuration = duration + 'ms';
+      body.appendChild(skull);
+      skull.addEventListener('animationend', () => skull.remove());
+    }
+
+    function createSail() {
+      const sail = document.createElement('div');
+      sail.classList.add('sail');
+      sail.style.top = (Math.random() * window.innerHeight * 0.8 + 20) + 'px';
+      const duration = (Math.random() * 12 + 8) * 1000;
+      sail.style.animationDuration = duration + 'ms';
+      body.appendChild(sail);
+      sail.addEventListener('animationend', () => sail.remove());
+    }
+
+    setInterval(createShot, 1200);
+    setInterval(createSkull, 4000);
+    setInterval(createSail, 3500);
+  </script>
 </body>
 </html>
