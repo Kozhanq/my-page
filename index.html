@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Пиратская GitHub страница</title>
+  <title>KOZHAN_NGG52 — GitHub</title>
 
   <!-- Шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet" />
 
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
       background: #000;
-      font-family: 'Cinzel Decorative', cursive;
+      font-family: 'Cinzel Decorative', serif;
       color: #fff;
+    }
+
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -24,82 +27,70 @@
       position: relative;
     }
 
-    .flag-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -3;
-      overflow: hidden;
-    }
-
     .flag {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 160vw;
-      height: auto;
-      max-height: 90vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200vw;
+      height: 100vh;
       background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_Mexico.png/1280px-Flag_of_Mexico.png') no-repeat center center;
       background-size: cover;
       transform-origin: left center;
       animation: wave 6s ease-in-out infinite;
-      filter: brightness(0.85);
-      opacity: 0.9;
+      filter: brightness(0.7);
+      opacity: 0.4;
+      z-index: -2;
     }
 
     @keyframes wave {
-      0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-      50% { transform: translate(-50%, -50%) rotate(2deg) scale(1.02); }
+      0%, 100% { transform: translateX(0) scale(1); }
+      50% { transform: translateX(-2%) scale(1.03); }
     }
 
     .stars {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      pointer-events: none;
       z-index: -1;
+      pointer-events: none;
     }
 
     .star {
       position: absolute;
+      width: 2px;
+      height: 2px;
       background: white;
       border-radius: 50%;
-      opacity: 0.8;
-      animation: twinkle 2s infinite alternate;
+      opacity: 0.7;
+      animation: blink 2s infinite alternate;
     }
 
-    @keyframes twinkle {
-      from {opacity: 0.3;}
-      to {opacity: 1;}
+    @keyframes blink {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
     }
 
     h1 {
-      font-family: 'Pirata One', cursive;
       font-size: 4em;
-      text-align: center;
-      color: #fff;
+      font-family: 'Pirata One', cursive;
       text-shadow:
-        0 0 5px #ff0000,
-        0 0 10px #ff4500,
-        0 0 20px #ff6347,
-        0 0 40px crimson;
-      animation: flicker 3s infinite;
+        0 0 10px red,
+        0 0 20px crimson,
+        0 0 40px darkred;
+      animation: appear 2.5s ease-in-out;
     }
 
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; transform: scale(1.02); }
+    @keyframes appear {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     p {
-      font-size: 1.4em;
-      text-align: center;
-      max-width: 800px;
-      color: rgba(255, 255, 255, 0.85);
-      font-family: 'Cinzel Decorative', serif;
-      line-height: 1.6em;
-      padding: 0 20px;
-      text-shadow: 0 0 4px rgba(255,0,0,0.3);
+      font-size: 1.5em;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-style: italic;
+      text-shadow: 1px 1px 4px #000;
     }
 
     .shots-container {
@@ -112,16 +103,16 @@
 
     .shot {
       position: absolute;
-      width: 4px;
+      width: 3px;
       height: 20px;
       background: linear-gradient(45deg, #fff, #ff0);
       filter: drop-shadow(0 0 6px #ff0);
-      animation: shot-move 0.4s ease-out forwards;
+      animation: shoot 0.4s ease-out forwards;
     }
 
-    @keyframes shot-move {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-200px) scale(0.2); }
+    @keyframes shoot {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-200px); }
     }
 
     .flash {
@@ -130,171 +121,72 @@
       width: 100%; height: 100%;
       background: white;
       opacity: 0;
+      animation: flashFade 0.2s ease forwards;
+      z-index: 999;
       pointer-events: none;
-      animation: flash-fade 0.2s ease forwards;
-      z-index: 20;
     }
 
-    @keyframes flash-fade {
-      0% {opacity: 0.9;}
-      100% {opacity: 0;}
-    }
-
-    .skull {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Skull_and_crossbones.svg/1024px-Skull_and_crossbones.svg.png') no-repeat center center/contain;
-      opacity: 0.3;
-      animation: skull-fall linear forwards;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    @keyframes skull-fall {
-      0% { top: -80px; }
-      100% { top: 110vh; }
-    }
-
-    .sail {
-      position: fixed;
-      width: 50px;
-      height: 50px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sailboat_icon.svg/1024px-Sailboat_icon.svg.png') no-repeat center center/contain;
-opacity: 0.15;
-      animation: sail-move linear forwards;
-      pointer-events: none;
-      z-index: 4;
-    }
-
-    @keyframes sail-move {
-      0% { left: -60px; }
-      100% { left: 110vw; }
-    }
-
-    /* Дым */
-    .smoke {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(rgba(255,255,255,0.1), transparent);
-      border-radius: 50%;
-      opacity: 0.1;
-      animation: smoke-rise 10s linear infinite;
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    @keyframes smoke-rise {
-      0% {
-        transform: translateY(0) scale(0.8);
-        opacity: 0.15;
-      }
-      100% {
-        transform: translateY(-400px) scale(1.5);
-        opacity: 0;
-      }
+    @keyframes flashFade {
+      from { opacity: 0.8; }
+      to { opacity: 0; }
     }
   </style>
 </head>
-
 <body>
-  <div class="flag-container">
-    <div class="flag"></div>
-  </div>
 
+  <div class="flag"></div>
   <div class="stars"></div>
-
-  <h1>Пиратская GitHub страница</h1>
-  <p>
-    Добро пожаловать в тьму! Здесь, под развевающимся флагом Мексики, черепа падают с неба, ветер воет, и гремят выстрелы сквозь мрак.<br>
-    Эта страница — приют цифровых пиратов.
-  </p>
-
   <div class="shots-container"></div>
 
-  <!-- Звуки -->
-  <audio id="gunshot-sound" src="https://www.fesliyanstudios.com/play-mp3/4389" preload="auto"></audio>
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2021/09/15/audio_a96a765f58.mp3" type="audio/mpeg">
-  </audio>
+  <h1>KOZHAN_NGG52</h1>
+  <p>I not gay</p>
+
+  <!-- Выстрелы -->
+  <audio id="gunshot" src="https://www.fesliyanstudios.com/play-mp3/4389" preload="auto"></audio>
 
   <script>
-    const shotsContainer = document.querySelector('.shots-container');
     const starsContainer = document.querySelector('.stars');
-    const body = document.body;
-    const gunshot = document.getElementById('gunshot-sound');
+    const shotsContainer = document.querySelector('.shots-container');
+    const gunshot = document.getElementById('gunshot');
 
+    // Звезды
     function createStars(num) {
       for (let i = 0; i < num; i++) {
         const star = document.createElement('div');
-        star.classList.add('star');
-        const size = Math.random() * 3 + 1;
-        star.style.width = size + 'px';
-        star.style.height = size + 'px';
-        star.style.top = Math.random() * window.innerHeight + 'px';
+        star.className = 'star';
         star.style.left = Math.random() * window.innerWidth + 'px';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        star.style.top = Math.random() * window.innerHeight + 'px';
         starsContainer.appendChild(star);
       }
     }
 
-    createStars(80);
-
+    // Выстрел
     function createShot() {
       const shot = document.createElement('div');
-      shot.classList.add('shot');
+      shot.className = 'shot';
       shot.style.left = Math.random() * window.innerWidth + 'px';
       shot.style.top = window.innerHeight + 'px';
       shotsContainer.appendChild(shot);
+
       shot.addEventListener('animationend', () => shot.remove());
 
       if (Math.random() < 0.3) createFlash();
 
+      // звук
       gunshot.currentTime = 0;
       gunshot.play().catch(() => {});
     }
 
+    // Вспышка
     function createFlash() {
       const flash = document.createElement('div');
-      flash.classList.add('flash');
-      body.appendChild(flash);
+      flash.className = 'flash';
+      document.body.appendChild(flash);
       flash.addEventListener('animationend', () => flash.remove());
     }
 
-    function createSkull() {
-      const skull = document.createElement('div');
-      skull.classList.add('skull');
-      skull.style.left = Math.random() * window.innerWidth + 'px';
-      const duration = (Math.random() * 10 + 8) * 1000;
-      skull.style.animationDuration = duration + 'ms';
-      body.appendChild(skull);
-      skull.addEventListener('animationend', () => skull.remove());
-    }
-
-    function createSail() {
-      const sail = document.createElement('div');
-      sail.classList.add('sail');
-      sail.style.top = (Math.random() * window.innerHeight * 0.8 + 20) + 'px';
-      const duration = (Math.random() * 12 + 8) * 1000;
-      sail.style.animationDuration = duration + 'ms';
-      body.appendChild(sail);
-      sail.addEventListener('animationend', () => sail.remove());
-    }
-
-    function createSmoke() {
-      const smoke = document.createElement('div');
-      smoke.classList.add('smoke');
-      smoke.style.left = Math.random() * window.innerWidth + 'px';
-      smoke.style.top = (Math.random() * window.innerHeight * 0.5 + 100) + 'px';
-      body.appendChild(smoke);
-      setTimeout(() => smoke.remove(), 10000);
-    }
-
-    setInterval(createShot, 1500);
-    setInterval(createSkull, 5000);
-    setInterval(createSail, 4000);
-    setInterval(createSmoke, 3000);
+    createStars(80);
+    setInterval(createShot, 1400);
   </script>
 </body>
 </html>
