@@ -13,7 +13,7 @@
     }
 
     body {
-      background: url('https://i.imgur.com/rhXUvVg.jpg') no-repeat center center fixed;
+      background: url('https://i.imgur.com/6d6W9Ng.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Montserrat', sans-serif;
       color: #f4e2d8;
@@ -28,26 +28,28 @@
 
     h1 {
       font-family: 'Pirata One', cursive;
-      font-size: 4rem;
+      font-size: 4.5rem;
       color: gold;
       text-shadow: 2px 2px 8px black;
       animation: sway 3s ease-in-out infinite;
       z-index: 2;
+      text-align: center;
     }
 
     .flag {
-      width: 120px;
+      width: 200px;
       margin-top: 1rem;
-      border: 2px solid gold;
-      animation: wave 3s ease-in-out infinite;
+      border: 3px solid gold;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      animation: wave 4s ease-in-out infinite;
       z-index: 2;
     }
 
     .skull {
-      font-size: 5rem;
       margin-top: 2rem;
-      animation: glow 1.5s infinite alternate;
-      text-shadow: 0 0 10px #fff;
+      width: 160px;
+      height: auto;
+      animation: glow 2s infinite alternate;
       z-index: 2;
     }
 
@@ -56,7 +58,7 @@
       border: 3px solid #e0c097;
       border-radius: 20px;
       padding: 2rem;
-      max-width: 700px;
+      max-width: 750px;
       margin-top: 2rem;
       text-align: center;
       box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
@@ -65,7 +67,7 @@
     }
 
     .parchment p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       line-height: 1.8;
     }
 
@@ -97,7 +99,7 @@
 
     @keyframes wave {
       0%, 100% { transform: rotateZ(0deg); }
-      50% { transform: rotateZ(3deg); }
+      50% { transform: rotateZ(2deg); }
     }
 
     @keyframes sway {
@@ -106,8 +108,8 @@
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #fff; }
-      to { text-shadow: 0 0 20px #ffcc00; }
+      from { filter: drop-shadow(0 0 5px #fff); }
+      to { filter: drop-shadow(0 0 20px #ffcc00); }
     }
 
     @keyframes fadeInUp {
@@ -120,24 +122,28 @@
 
   <div class="overlay"></div>
 
-  <h1>Пиратская Гавань</h1>
+  <h1>Пиратская Гавань Капитана Козхана</h1>
+
+  <!-- Флаг Мексики -->
   <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" alt="Флаг Мексики" class="flag" />
-  <div class="skull">☠️</div>
+
+  <!-- Череп-гифка -->
+  <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Пиратский череп" class="skull" />
 
   <div class="parchment">
     <p>
-      Здесь начинается твоя легенда, капитан...<br><br>
-      🌊 Добро пожаловать в цифровую гавань, где хранятся твои сокровища: проекты, боты, идеи и мечты.<br><br>
-      ⚓ Используй эту страницу как карту к сокровищам. Добавляй сюда ссылки, истории, коды.<br><br>
-      🏴‍☠️ Не бойся добавить свою душу в эту гавань — она ждёт настоящего капитана!
+      Добро пожаловать, странник! Здесь ты найдёшь коды, сокровища и идеи, спрятанные в цифровых глубинах.<br><br>
+      ⚓ Добавь сюда свои проекты — в виде островов, квестов или карт.<br>
+      🏴‍☠️ А может, ты хочешь подключить Telegram-бота, форму связи или корабельный лог?<br><br>
+      Всё возможно. Это твой корабль.
     </p>
   </div>
 
   <footer>
-    Капитан Козхан ⚓ GitHub: <a href="https://github.com/Kozhanq">Kozhanq</a>
+    ⚓ Сделано с ромом и золотом | <a href="https://github.com/Kozhanq">GitHub Капитана</a>
   </footer>
 
-  <!-- Звук моря -->
+  <!-- Фоновый звук моря -->
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/audio/2022/03/25/audio_96a4cfb10b.mp3" type="audio/mpeg">
   </audio>
